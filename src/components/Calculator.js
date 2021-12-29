@@ -1,14 +1,44 @@
 import React, { useState } from 'react'
 import './Calculator.css'
 
-import { buttons } from '../config/buttons'
+import { buttons, BUTTON_ACTIONS } from '../config/buttons'
 
 function Calculator() {
 
 	const [expression, setExpression] = useState('')
 
 	const buttonClick = (item) => {
-		setExpression(expression + item.display)
+		if (item.action == BUTTON_ACTIONS.ADD) {
+			if (expression == 'Syntax error')
+				setExpression('')
+			else if (item.display == 'x')
+				setExpression(expression + '*')
+			else
+				setExpression(expression + item.display)
+		}
+
+		if (item.action == BUTTON_ACTIONS.DELETE) {
+			setExpression('')
+		}
+
+		if (item.action == BUTTON_ACTIONS.CALC) {
+			// If there is no expression
+			if (expression.trim() <= 0) {
+				console.log('trim')
+				return
+			}
+
+			// Compute expression
+			try {
+				let res = eval(expression)
+
+				setExpression(res.toString())
+				
+			} catch (error) {
+				setExpression('Syntax error')
+				console.log(error)
+			}
+		}
 	}
 
 	return (

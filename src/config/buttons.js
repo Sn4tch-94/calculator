@@ -1,13 +1,21 @@
 export const BUTTON_ACTIONS = {
 	ADD: 'ADD',
 	CALC: 'CALC',
-	DELETE: 'DELETE'
+	DELETE: 'DELETE',
 }
 
 export const buttons = [
 	{
 		display: 'C',
 		action: BUTTON_ACTIONS.DELETE
+	},
+	{
+		display: '(',
+		action: BUTTON_ACTIONS.ADD
+	},
+	{
+		display: ')',
+		action: BUTTON_ACTIONS.ADD
 	},
 	{
 		display: '/',

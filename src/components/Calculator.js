@@ -49,6 +49,10 @@ function Calculator() {
 
 				setHistory(expression)
 				setExpression(res.toString())
+
+				// Easter egg 🥚
+				if (res === 42)
+					console.log('%c ', 'font-size:2000px; background:url(https://pbs.twimg.com/media/EVykyJxXQAELuta.jpg) no-repeat;');
 				
 			} catch (error) {
 				setExpression('Syntax error')

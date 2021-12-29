@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './Calculator.css'
 
 import { buttons, BUTTON_ACTIONS } from '../config/buttons'
 
 function Calculator() {
 
+	const buttonsRef = useRef(null);
+
 	const [expression, setExpression] = useState('')
+	const [history, setHistory] = useState('')
+
+	useEffect(() => {
+		const buttons = Array.from(buttonsRef.current.querySelectorAll('button'));
+		buttons.forEach(e => e.style.height = e.offsetWidth + 'px');
+	}, []);
 
 	const buttonClick = (item) => {
 		if (item.action == BUTTON_ACTIONS.ADD) {
@@ -32,6 +40,7 @@ function Calculator() {
 			try {
 				let res = eval(expression)
 
+				setHistory(expression)
 				setExpression(res.toString())
 				
 			} catch (error) {
@@ -43,13 +52,19 @@ function Calculator() {
 
 	return (
 		<div className="calculator__container">
-			<div className="calculator__results">
-				{expression}
+			<div className="calculator__results__container">
+				<div className="calculator__result">
+					{history}
+				</div>
+				<div className="calculator__result">
+					{expression}
+				</div>
 			</div>
-			<div className="calculator__buttons">
+			<div ref={buttonsRef} className="calculator__buttons">
 				{
 					buttons.map((item, index) => (
 						<button
+							className={item.class}
 							key={index}
 							onClick={() => buttonClick(item)}
 						>

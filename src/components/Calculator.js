@@ -16,20 +16,24 @@ function Calculator() {
 	}, []);
 
 	const buttonClick = (item) => {
-		if (item.action == BUTTON_ACTIONS.ADD) {
-			if (expression == 'Syntax error')
+		if (item.action === BUTTON_ACTIONS.ADD) {
+			if (expression === 'Syntax error')
 				setExpression('')
-			else if (item.display == 'x')
+			else if (item.display === 'x')
 				setExpression(expression + '*')
 			else
 				setExpression(expression + item.display)
 		}
 
-		if (item.action == BUTTON_ACTIONS.DELETE) {
+		if (item.action === BUTTON_ACTIONS.DELETE) {
 			setExpression('')
 		}
 
-		if (item.action == BUTTON_ACTIONS.CALC) {
+		if (item.action === BUTTON_ACTIONS.THEME) {
+			document.body.classList.toggle('dark')
+		}
+
+		if (item.action === BUTTON_ACTIONS.CALC) {
 			// If there is no expression
 			if (expression.trim() <= 0) {
 				console.log('trim')

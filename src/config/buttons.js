@@ -2,6 +2,7 @@ export const BUTTON_ACTIONS = {
 	ADD: 'ADD',
 	CALC: 'CALC',
 	DELETE: 'DELETE',
+	THEME: 'THEME'
 }
 
 export const buttons = [
@@ -84,6 +85,11 @@ export const buttons = [
 		display: '+',
 		action: BUTTON_ACTIONS.ADD,
 		class: 'button__operator'
+	},
+	{
+		display: '🌗',
+		action: BUTTON_ACTIONS.THEME,
+		class: ''
 	},
 	{
 		display: '0',

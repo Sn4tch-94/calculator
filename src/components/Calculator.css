@@ -1,0 +1,27 @@
+.calculator__container {
+	height: 700px;
+	width: 400px;
+	padding: 20px;
+
+	background-color: lightblue;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.calculator__results {
+	margin-bottom: 20px;
+
+	display: flex;
+	justify-content: flex-end;
+
+	background-color: lightgreen;
+}
+
+.calculator__buttons {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+
+	background-color: lightpink;
+}

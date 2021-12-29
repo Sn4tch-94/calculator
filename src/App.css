@@ -23,7 +23,7 @@
 body {
 	display: flex;
 	justify-content: center;
-	padding-top: 100px;
+	padding-top: 75px;
 
 	background-color: var(--body-background);
 	color: var(--text-color);

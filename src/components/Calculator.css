@@ -32,10 +32,9 @@
 	transition: transform 0.2s ease;
 }
 
-.calculator__result span {
-	display: inline-block;
-	overflow: hidden;
-	transition: width 0.3s ease;
+.calculator__result__history {
+	font-size: 2rem;
+	line-height: 2;
 }
 
 .calculator__buttons {
@@ -57,7 +56,7 @@
 .calculator__buttons button:last-child {
 	border-radius: 50%;
 	color: var(--text-white);
-	background-image: linear-gradient(300deg, orange, purple);
+	background-image: linear-gradient(240deg, orange, purple);
 }
 
 .calculator__buttons .button__operator {

@@ -17,6 +17,8 @@ function Calculator() {
 
 	const buttonClick = (item) => {
 		if (item.action === BUTTON_ACTIONS.ADD) {
+			if (expression.length >= 10)
+				return
 			if (expression === 'Syntax error')
 				setExpression('')
 			else if (item.display === 'x')
@@ -26,7 +28,8 @@ function Calculator() {
 		}
 
 		if (item.action === BUTTON_ACTIONS.DELETE) {
-			setExpression('')
+			setExpression(history)
+			setHistory('')
 		}
 
 		if (item.action === BUTTON_ACTIONS.THEME) {
@@ -57,7 +60,7 @@ function Calculator() {
 	return (
 		<div className="calculator__container">
 			<div className="calculator__results__container">
-				<div className="calculator__result">
+				<div className="calculator__result__history">
 					{history}
 				</div>
 				<div className="calculator__result">

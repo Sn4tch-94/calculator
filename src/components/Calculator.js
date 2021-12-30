@@ -45,7 +45,7 @@ function Calculator() {
 
 			// Compute expression
 			try {
-				let res = eval(expression)
+				let res = Number(eval(expression).toPrecision(10))
 
 				setHistory(expression)
 				setExpression(res.toString())

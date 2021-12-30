@@ -11,11 +11,13 @@ function Calculator() {
 	const [history, setHistory] = useState('')
 
 	useEffect(() => {
+		// Adapt buttons height for mobile usage
 		const buttons = Array.from(buttonsRef.current.querySelectorAll('button'));
 		buttons.forEach(e => e.style.height = e.offsetWidth + 'px');
 	}, []);
 
 	const buttonClick = (item) => {
+		// Add button display to expression
 		if (item.action === BUTTON_ACTIONS.ADD) {
 			if (expression.length >= 10)
 				return
@@ -27,15 +29,18 @@ function Calculator() {
 				setExpression(expression + item.display)
 		}
 
+		// Delete expression
 		if (item.action === BUTTON_ACTIONS.DELETE) {
 			setExpression(history)
 			setHistory('')
 		}
 
+		// Switch dark mode
 		if (item.action === BUTTON_ACTIONS.THEME) {
 			document.body.classList.toggle('dark')
 		}
 
+		// Compute expression
 		if (item.action === BUTTON_ACTIONS.CALC) {
 			// If there is no expression
 			if (expression.trim() <= 0) {
@@ -43,7 +48,7 @@ function Calculator() {
 				return
 			}
 
-			// Compute expression
+			// Try to compute expression
 			try {
 				let res = Number(eval(expression).toPrecision(10))
 
